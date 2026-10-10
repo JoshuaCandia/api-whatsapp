@@ -1,4 +1,4 @@
-# Reino Cerámicos - WhatsApp Chatbot & Sistema de Agentes
+# WhatsApp Chatbot & Sistema de Agentes
 
 <div align="center">
 
@@ -34,7 +34,7 @@ Este sistema combina un **chatbot conversacional** con un **panel de gestión pa
 - **Control de acceso granular**: cada rol ve solo lo que le corresponde
 - **Asignación inteligente**: conversaciones se asignan según disponibilidad
 - **Chat en tiempo real**: WebSockets para actualizaciones instantáneas
-- **Multi-sucursal**: organizado por zonas y tiendas (Reinos)
+- **Multi-sucursal**: organizado por zonas y tiendas
 
 ---
 
@@ -204,8 +204,8 @@ src/
 
 ```bash
 # Clonar el repo
-git clone https://github.com/reinoceramicos/chatbot-reino.git
-cd chatbot-reino
+git clone https://github.com/JoshuaCandia/api-whatsapp.git
+cd api-whatsapp
 
 # Instalar dependencias
 npm install
@@ -240,7 +240,7 @@ META_PHONE_NUMBER_ID=tu_numero_de_telefono
 META_VERIFY_TOKEN=token_para_verificar_webhook
 
 # Base de Datos
-DATABASE_URL="postgresql://user:password@localhost:5432/reino_chatbot"
+DATABASE_URL="postgresql://user:password@localhost:5432/chatbot"
 
 # JWT
 JWT_SECRET=tu_secreto_super_seguro
@@ -274,7 +274,7 @@ POST /api/agents/auth/login
 Content-Type: application/json
 
 {
-  "email": "vendedor@reino.com",
+  "email": "vendedor@example.com",
   "password": "123456"
 }
 ```
@@ -286,7 +286,7 @@ Respuesta:
     "id": "clx...",
     "name": "Juan Vendedor",
     "role": "SELLER",
-    "store": { "name": "Reino 1 - Belgrano" }
+    "store": { "name": "Tienda 1 - Belgrano" }
   },
   "token": "eyJhbGciOiJIUzI1NiIs..."
 }
@@ -354,7 +354,7 @@ socket.on('conversation:assigned', (data) => {
 | Rol | Acceso | Descripción |
 |-----|--------|-------------|
 | `SELLER` | Sus propias conversaciones | Vendedor de piso |
-| `MANAGER` | Todas las de su tienda | Encargado de Reino |
+| `MANAGER` | Todas las de su tienda | Encargado de tienda |
 | `ZONE_SUPERVISOR` | Todas las de su zona | Supervisor zonal |
 | `REGIONAL_MANAGER` | Todas | Gerencia regional |
 
@@ -366,21 +366,21 @@ Después de ejecutar el seed:
 
 ```
 GERENCIA
-└─ gerente@reino.com / 123456
+└─ gerente@example.com / 123456
 
 ZONALES
-├─ zonal.norte@reino.com / 123456
-├─ zonal.sur@reino.com / 123456
-└─ zonal.oeste@reino.com / 123456
+├─ zonal.norte@example.com / 123456
+├─ zonal.sur@example.com / 123456
+└─ zonal.oeste@example.com / 123456
 
 ENCARGADOS
-├─ encargado.r1@reino.com / 123456 (Reino Belgrano)
-└─ encargado.r2@reino.com / 123456 (Reino Palermo)
+├─ encargado.r1@example.com / 123456 (Tienda Belgrano)
+└─ encargado.r2@example.com / 123456 (Tienda Palermo)
 
 VENDEDORES
-├─ vendedor1.r1@reino.com / 123456
-├─ vendedor2.r1@reino.com / 123456
-└─ vendedor1.r2@reino.com / 123456
+├─ vendedor1.r1@example.com / 123456
+├─ vendedor2.r1@example.com / 123456
+└─ vendedor1.r2@example.com / 123456
 ```
 
 ---
@@ -410,7 +410,7 @@ npm run migrate   # Ejecutar migraciones
 
 ## Licencia
 
-Propiedad de Reino Cerámicos. Todos los derechos reservados.
+Desarrollado para una empresa de retail. Todos los derechos reservados.
 
 ---
 
